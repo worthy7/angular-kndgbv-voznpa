@@ -1,0 +1,36 @@
+<p>
+  Demo showing a custom number input that accepts decimals in the users native
+  locale, but always returns a numeric format internally.
+</p>
+
+<p>Please change the locale in the app.module.ts to experiment.</p>
+
+<p>The input will only accept decimals ',' when using French.</p>
+
+<p>
+  (Example is modified from the original angular material custom form control
+  guide, so it's got lots of things related to phone numbers still
+  https://material.angular.io/guide/creating-a-custom-form-field-control#trying-it-out)}
+</p>
+
+<div [formGroup]="form">
+  <mat-form-field appearance="fill">
+    <mat-label>Phone number</mat-label>
+    <example-tel-input formControlName="tel" required></example-tel-input>
+    <mat-icon matSuffix>phone</mat-icon>
+    <mat-hint>Include area code</mat-hint>
+    <mat-error *ngIf="form.controls.tel.invalid">Invalid number</mat-error>
+  </mat-form-field>
+</div>
+{{form.controls.tel.invalid}}
+<p></p>
+<p>Internal number value: {{form.controls.tel.value}}</p>
+<p>
+  Localize display: {{form.controls.tel.value | number}}
+
+  <!-- Copyright 2022 Google LLC. All Rights Reserved.
+    Use of this source code is governed by an MIT-style license that
+    can be found in the LICENSE file at https://angular.io/license -->
+</p>
+
+<button (click)="setvalue()">Set 4.123 from db</button>
